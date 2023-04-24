@@ -63,7 +63,7 @@ public class a2Part1 {
         System.out.println("Hidden layer weights:\n" + Arrays.deepToString(nn.hidden_layer_weights));
         System.out.println("Output layer weights:\n" + Arrays.deepToString(nn.output_layer_weights));
 
-        // TODO: Train for 100 epochs, on all instances.
+        // Train for 100 epochs, on all instances.
 
         nn.train(instances, integer_encoded, 100);
 
@@ -79,6 +79,7 @@ public class a2Part1 {
         // scale the test according to our training data.
         rescaler.rescaleData(instances_test);
 
+        // Compute and print the test accuracy
 
         int[] predictions = nn.predict(instances_test);
         int[] test_encoded = label_encoder.intEncode(labels_test);
@@ -87,8 +88,7 @@ public class a2Part1 {
             if(predictions[i] == test_encoded[i]) count++;
         }
 
-        System.out.println("acc = " + (double)count / (double)test_encoded.length);
-        // TODO: Compute and print the test accuracy
+        System.out.println("Test acc = " + (double)count / (double)test_encoded.length);
         System.out.println("Finished!");
     }
 
