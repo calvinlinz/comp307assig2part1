@@ -7,10 +7,10 @@ public class NeuralNetwork {
     private final int num_hidden;
     private final int num_outputs;
     private final double learning_rate;
-    private final double[][] bias;
+    private final double[] bias;
 
     public NeuralNetwork(int num_inputs, int num_hidden, int num_outputs, double[][] initial_hidden_layer_weights,
-            double[][] initial_output_layer_weights, double learning_rate, double[][] bias) {
+            double[][] initial_output_layer_weights, double learning_rate, double[] bias) {
         // Initialise the network
         this.num_inputs = num_inputs;
         this.num_hidden = num_hidden;
@@ -37,7 +37,7 @@ public class NeuralNetwork {
             for (int j = 0; j < num_inputs; j++) {
                 weighted_sum += inputs[j] * hidden_layer_weights[j][i];
             }
-            weighted_sum += bias[0][i];
+            weighted_sum += bias[i];
             double output = sigmoid(weighted_sum);
             hidden_layer_outputs[i] = output;
         }
@@ -48,7 +48,7 @@ public class NeuralNetwork {
             for (int j = 0; j < num_hidden; j++) {
                 weighted_sum += hidden_layer_outputs[j] * output_layer_weights[j][i]; 
             }
-            weighted_sum += bias[0][i];
+            weighted_sum += bias[i];
 
             double output = sigmoid(weighted_sum);
             output_layer_outputs[i] = output;
@@ -105,7 +105,7 @@ public class NeuralNetwork {
         for (int i = 0; i < num_hidden; i++) {
             for (int j = 0; j < num_outputs; j++) {
                 output_layer_weights[i][j] += learning_rate * delta_output_layer_weights[i][j];
-                bias[0][j] += learning_rate * delta_bias[0][j];
+                bias[j] += learning_rate * delta_bias[0][j];
 
             }
         }
@@ -113,7 +113,7 @@ public class NeuralNetwork {
         for (int i = 0; i < num_inputs; i++) {
             for (int j = 0; j < num_hidden; j++) {
                 hidden_layer_weights[i][j] += learning_rate * delta_hidden_layer_weights[i][j];
-                bias[0][j] += learning_rate * delta_bias[0][j];
+                bias[j] += learning_rate * delta_bias[0][j];
             }
         }
 
