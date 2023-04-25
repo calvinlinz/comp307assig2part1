@@ -26,7 +26,7 @@ public class a2Part1 {
         int n_in = 4, n_hidden = 2, n_out = 3;
         double learning_rate = 0.2;
 
-        double[] bias =  new double[]{-0.02, -0.2, -0.33, 0.26, 0.06};
+        double[][] bias =  new double[][]{{-0.02, -0.2, -0.33, 0.26, 0.06},{-0.02, -0.2, -0.33, 0.26, 0.06}};
 
         double[][] initial_hidden_layer_weights =
                 new double[][]{{-0.28, -0.22}, {0.08, 0.20}, {-0.30, 0.32}, {0.10, 0.01}};
