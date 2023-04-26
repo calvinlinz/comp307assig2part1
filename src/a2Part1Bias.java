@@ -1,7 +1,7 @@
 import java.util.Arrays;
 import java.util.List;
 
-public class a2Part1 {
+public class a2Part1Bias {
     public final static int maxEpoch = 1;
     public static void main(String[] _ignored) {
         List<String[]> lines = Util.getLines("penguins307-train.csv");
@@ -25,14 +25,14 @@ public class a2Part1 {
         // Parameters. As per the handout.
         int n_in = 4, n_hidden = 2, n_out = 3;
         double learning_rate = 0.2;
-
+        boolean biasFlag = true;
         double[][] bias =  new double[][]{{-0.02, -0.2, -0.33, 0.26, 0.06},{-0.02, -0.2, -0.33, 0.26, 0.06}};
 
         double[][] initial_hidden_layer_weights =
                 new double[][]{{-0.28, -0.22}, {0.08, 0.20}, {-0.30, 0.32}, {0.10, 0.01}};
         double[][] initial_output_layer_weights = new double[][]{{-0.29, 0.03, 0.21}, {0.08, 0.13, -0.36}};
 
-        NeuralNetwork nn = new NeuralNetwork(n_in, n_hidden, n_out, initial_hidden_layer_weights, initial_output_layer_weights, learning_rate, bias);
+        NeuralNetwork nn = new NeuralNetwork(n_in, n_hidden, n_out, initial_hidden_layer_weights, initial_output_layer_weights, learning_rate, bias,biasFlag);
 
         System.out.printf("First instance has label %s, which is %d as an integer, and %s as a list of outputs.\n",
                 labels[0], integer_encoded[0], Arrays.toString(onehot_encoded[0]));
