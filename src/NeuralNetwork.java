@@ -140,10 +140,11 @@ public class NeuralNetwork {
             }
 
             // Print new weights
-            System.out.println("Hidden layer weights \n" + Arrays.deepToString(hidden_layer_weights));
-            System.out.println("Output layer weights  \n" + Arrays.deepToString(output_layer_weights));
-
-            // TODO: Print accuracy achieved over this epoch
+            if(epoch<10){
+                System.out.println("Hidden layer weights \n" + Arrays.deepToString(hidden_layer_weights));
+                System.out.println("Output layer weights  \n" + Arrays.deepToString(output_layer_weights));
+            }
+            // Print accuracy achieved over this epoch
             int correct = 0;
             for (int j = 0; j < instances.length; j++) {
                 if (predictions[j] == desired_outputs[j]) {

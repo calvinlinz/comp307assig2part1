@@ -12,7 +12,6 @@ public class a2Part1noBias {
         // scale features to [0,1] to improve training
         Rescaler rescaler = new Rescaler(instances);
         rescaler.rescaleData(instances);
-        System.out.println(Arrays.deepToString(instances));
 
         // We can"t use strings as labels directly in the network, so need to do some transformations
         LabelEncoder label_encoder = new LabelEncoder(labels);
@@ -51,7 +50,7 @@ public class a2Part1noBias {
 
 
 
-        // TODO: Perform a single backpropagation pass using the first instance only. (In other words, train with 1
+        //  Perform a single backpropagation pass using the first instance only. (In other words, train with 1
         //  instance for 1 epoch!). Hint: you will need to first get the weights from a forward pass.
 
         nn.train(new double[][]{instances[0]}, integer_encoded, 1);
