@@ -33,7 +33,7 @@ public class NeuralNetwork {
     public double[][] forward_pass(double[] inputs) {
         double[] hidden_layer_outputs = new double[num_hidden];
         for (int i = 0; i < num_hidden; i++) {
-            double weighted_sum = biasFlag ? bias[0][i] : 0;
+            double weighted_sum = biasFlag ? bias[1][i] : 0;
             for (int j = 0; j < num_inputs; j++) {
                 weighted_sum += inputs[j] * hidden_layer_weights[j][i];
             }
@@ -91,7 +91,7 @@ public class NeuralNetwork {
         for (int i = 0; i < num_inputs; i++) {
             for (int j = 0; j < num_hidden; j++) {
                 delta_hidden_layer_weights[i][j] = inputs[i] * hidden_errors[j];
-                delta_bias_hidden[j] += hidden_errors[j];
+                delta_bias_hidden[j] = hidden_errors[j];
             }
         }
 
